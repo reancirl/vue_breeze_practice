@@ -7,8 +7,11 @@ import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 
 const form = useForm({
-    name: "",
+    first_name: "",
+    last_name: "",
     email: "",
+    mobile_number: "",
+    address: "",
     password: "",
     password_confirmation: "",
     terms: false,
@@ -29,15 +32,28 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <BreezeLabel for="name" value="Name" />
+                <BreezeLabel for="first_name" value="First Name" />
                 <BreezeInput
-                    id="name"
+                    id="first_name"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
+                    v-model="form.first_name"
                     required
                     autofocus
-                    autocomplete="name"
+                    autocomplete="first_name"
+                />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="last_name" value="Last Name" />
+                <BreezeInput
+                    id="last_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.last_name"
+                    required
+                    autofocus
+                    autocomplete="last_name"
                 />
             </div>
 
@@ -50,6 +66,32 @@ const submit = () => {
                     v-model="form.email"
                     required
                     autocomplete="username"
+                />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="mobile_number" value="Mobile Number" />
+                <BreezeInput
+                    id="mobile_number"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.mobile_number"
+                    required
+                    autofocus
+                    autocomplete="mobile_number"
+                />
+            </div>
+
+            <div class="mt-4">
+                <BreezeLabel for="address" value="Address" />
+                <BreezeInput
+                    id="address"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.address"
+                    required
+                    autofocus
+                    autocomplete="address"
                 />
             </div>
 
