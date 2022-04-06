@@ -43,7 +43,10 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Products
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('dashboard')">
+                                <BreezeNavLink
+                                    :href="route('orders.index')"
+                                    :active="route().current('orders*')"
+                                >
                                     Orders
                                 </BreezeNavLink>
                             </div>
@@ -161,7 +164,10 @@ const showingNavigationDropdown = ref(false);
                         >
                             Products
                         </BreezeResponsiveNavLink>
-                        <BreezeResponsiveNavLink :href="route('dashboard')">
+                        <BreezeResponsiveNavLink
+                            :href="route('orders.index')"
+                            :active="route().current('orders*')"
+                        >
                             Orders
                         </BreezeResponsiveNavLink>
                     </div>

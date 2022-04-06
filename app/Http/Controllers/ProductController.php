@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::all()->map(function ($product) {
+        $products = Product::all()->map(function ($product) {
             return [
                 'id' => $product->id,
                 'name' => $product->name,
@@ -58,7 +58,7 @@ class ProductsController extends Controller
             'status' => 'required',
         ]);
 
-        $data = new Products;
+        $data = new Product;
         $data->fill($validated);
         $data->save();
 
@@ -68,10 +68,10 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Product $product)
     {
         //
     }
@@ -79,10 +79,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Product  $product1
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $product)
+    public function edit(Product $product)
     {
         return Inertia::render('products/Edit', [
             'product' => $product,
@@ -96,7 +96,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $product)
+    public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
             'name' => 'required',
@@ -118,7 +118,7 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function statusUpdate(Products $product)
+    public function statusUpdate(Product $product)
     {
         $product->status = $product->status == 'active' ? 'inactive' : 'active';
         $product->save();

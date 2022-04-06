@@ -3,7 +3,8 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function() {
-    Route::resource('products', ProductsController::class)->except(['destroy']);
-    Route::patch('products/{product}/update-status',[ProductsController::class, 'statusUpdate'])->name('productStatusUpdate');
+    Route::resource('products', ProductController::class)->except(['destroy']);
+    Route::patch('products/{product}/update-status',[ProductController::class, 'statusUpdate'])->name('productStatusUpdate');
+    Route::resource('orders', OrderController::class);
     
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
